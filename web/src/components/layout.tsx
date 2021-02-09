@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+// import { useStaticQuery, graphql } from 'gatsby';
 /**
  * Layout component that queries for data
  * with Gatsby's useStaticQuery component
@@ -7,7 +7,7 @@ import { useStaticQuery, graphql } from 'gatsby';
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import Header from './header';
+import Nav from './nav/nav';
 
 interface LayoutProps {
   children: any
@@ -15,7 +15,7 @@ interface LayoutProps {
 
 const Layout = (props: LayoutProps) => {
   const { children } = props;
-  const data = useStaticQuery(graphql`
+  /* const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -23,11 +23,11 @@ const Layout = (props: LayoutProps) => {
         }
       }
     }
-  `);
+  `); */
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || 'Title'} />
+      <Nav />
 
       <main>{children}</main>
       <footer>
