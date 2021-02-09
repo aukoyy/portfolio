@@ -138,3 +138,7 @@ sketch
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/node,react,vscode
+
+
+# lerna files
+/lerna-debug.log
