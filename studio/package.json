@@ -1,8 +1,8 @@
 {
-  "name": "",
+  "name": "portfolio-studio",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "CMS for portfolio of author",
   "main": "package.json",
   "author": "Øyvind Aukner <oyvind.auk@gmail.com>",
   "license": "UNLICENSED",
