@@ -14,7 +14,7 @@ export default {
           {
             title: 'Website',
             apiId: '28e466ca-7351-461d-bf7e-95c5b26ede02',
-            buildHookId: 'https://api.netlify.com/build_hooks/6023c09206955f0fda05eb35',
+            buildHookId: 'https://api.netlify.com/build_hooks/6023cf77c77ef421c2fece34',
             name: 'aukoyy'
           }
         ]
