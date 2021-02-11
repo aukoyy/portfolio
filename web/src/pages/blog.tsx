@@ -27,13 +27,14 @@ const BlogPage = (props: any) => {
     <h1>Hi from the blog page</h1>
     <p>Welcome to the blog</p>
     
-    <ul>
-    {posts.nodes.map((post: any) => {
-        <li>{post.title}</li>
+    <div className="border h-24">
+      {posts.nodes.map((node: any) => {
+        return (
+          <div key={node.id}>{node.title}</div>
+        )
       })}
-      </ul>
-
-    {posts.nodes[0].title}
+      {/* {posts.nodes[0]._rawExcerpt[0].children[0].text} */}
+    </div>
 
     <Link to="/">Go back to the homepage</Link>
   </Layout>
