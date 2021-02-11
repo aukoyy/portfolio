@@ -8,7 +8,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "sanity start",
-    "build": "sanity build"
+    "build": "sanity build",
+    "graphql-deploy": "lerna run graphql-deploy"
   },
   "keywords": [
     "sanity"
