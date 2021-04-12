@@ -35,7 +35,7 @@ module.exports = {
         dataset: 'production',
         // a token with read permissions is required
         // if you have a private dataset
-        token: process.env.MY_SANITY_TOKEN,
+        token: process.env.SANITY_READ_TOKEN,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
