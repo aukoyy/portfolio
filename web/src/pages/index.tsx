@@ -28,8 +28,8 @@ const IndexPage = (props: any) => {
         <h1 className="text-3xl">Hi, I am Øyvind</h1>
         <p>I like creating things with web technologies</p>
 
-        <h2 className="text-2xl">Latest blog posts</h2>
-        <div className="mt-16 flex">
+        <h2 className="text-2xl mt-36">Latest blog posts</h2>
+        <div className="mt-8 flex">
           {posts.nodes.map((node: any) => {
             return (
               <div key={node.id}>
@@ -41,7 +41,6 @@ const IndexPage = (props: any) => {
         </div>
 
 
-        <h3 className="text-2xl">Projects</h3>
       </div>
     </div>
 

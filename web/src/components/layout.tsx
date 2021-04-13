@@ -26,14 +26,16 @@ const Layout = (props: LayoutProps) => {
   `); */
 
   return (
-    <>
-      <Nav />
+    <div className="min-h-screen flex flex-col justify-between">
+      <div>
+        <Nav />
+        <main>{children}</main>
+      </div>
 
-      <main>{children}</main>
-      <footer>
+      <footer className="bg-purple-400 h-36">
         footer
       </footer>
-    </>
+    </div>
   );
 };
 
