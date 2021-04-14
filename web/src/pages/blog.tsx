@@ -35,6 +35,7 @@ const BlogPage = (props: any) => {
               <ul className="flex">
                 <li>All</li>
                 <li className='ml-8'>Web</li>
+                <li className='ml-8'>Freelancing</li>
                 <li className='ml-8'>Futurology</li>
               </ul>
             </nav>

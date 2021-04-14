@@ -1,0 +1,37 @@
+import React from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInstagram, faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'gatsby';
+
+
+
+const Footer = () => {
+  return (
+    <footer className="bg-purple-400 h-48 flex justify-center items-center">
+        <FooterIcon icon={faInstagram} url="https://www.instagram.com/aukoyy/" />
+        <FooterIcon icon={faGithub} url="https://github.com/aukoyy" />
+        <FooterIcon icon={faTwitter} url="https://twitter.com/aukoyy" />
+        <FooterIcon icon={faLinkedin} url="https://www.linkedin.com/in/%C3%B8yvind-aukner-a51659183/" />
+        <FooterIcon icon={faGraduationCap} url="" />
+    </footer>
+  ) 
+}
+
+export default Footer
+
+interface FooterIconProps {
+  icon: any
+  url: string
+}
+
+const FooterIcon = (props: FooterIconProps) => {
+  const {icon, url} = props
+  return (
+    <div className="text-yellow-400 m-4">
+      <Link to={url} target="_blank">
+        <FontAwesomeIcon icon={icon} size="3x" />
+      </Link>
+    </div>
+  )
+}

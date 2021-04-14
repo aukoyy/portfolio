@@ -29,7 +29,7 @@ const Nav = (props: NavProps) => {
 
       {/* // cn(showNav ? 'flex justify-center text-center' : 'hidden md:flex') */}
       <nav className={cn(showNav ? 'flex justify-center' : 'hidden md:block', 'mt-24 md:mt-0')}>
-        <ul className="flex flex-col md:flex-row md:justify-between mb-96 md:m-4 md:w-64">
+        <ul className="flex flex-col md:flex-row md:justify-between mb-96 md:m-4 md:w-36">
           <NavItem
             text="HOME"
             url="/"
@@ -38,10 +38,10 @@ const Nav = (props: NavProps) => {
             text="BLOG"
             url="/blog/"
           />
-          <NavItem
+          {/* <NavItem
             text="PROJECTS"
             url="/projects/"
-          />
+          /> */}
         </ul>
         {showNav}
       </nav>

@@ -8,6 +8,7 @@ import React from 'react';
  */
 
 import Nav from './nav/nav';
+import Footer from './footer';
 
 interface LayoutProps {
   children: any
@@ -32,9 +33,7 @@ const Layout = (props: LayoutProps) => {
         <main>{children}</main>
       </div>
 
-      <footer className="bg-purple-400 h-36">
-        footer
-      </footer>
+      <Footer />
     </div>
   );
 };
