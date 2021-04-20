@@ -8,7 +8,7 @@ import { Link } from 'gatsby';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-700 h-48 flex justify-center items-center">
+    <footer className="bg-gray-700 h-48 flex justify-center items-center mt-8">
         <FooterIcon icon={faInstagram} url="https://www.instagram.com/aukoyy/" />
         <FooterIcon icon={faGithub} url="https://github.com/aukoyy" />
         <FooterIcon icon={faTwitter} url="https://twitter.com/aukoyy" />
@@ -30,7 +30,7 @@ const FooterIcon = (props: FooterIconProps) => {
   return (
     <div className="text-blue-500 m-4">
       <Link to={url} target="_blank">
-        <FontAwesomeIcon icon={icon} size="3x" />
+        <FontAwesomeIcon icon={icon} size="2x" />
       </Link>
     </div>
   )

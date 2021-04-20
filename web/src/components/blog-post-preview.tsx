@@ -11,7 +11,7 @@ interface BlogPostPreviewProps {
 
 const BlogPostPreview = (props: BlogPostPreviewProps) => {
   return (
-    <div className='shadow rounded-xl m-4 p-4 w-64'>
+    <div className='shadow rounded-xl p-4 mt-4 md:w-96'>
       <div>picture</div>
       <h3 className='font-bold'>{props.node.title}</h3>
       <p className='text-gray-500'>{props.node._rawExcerpt && props.node._rawExcerpt[0].children[0].text}</p>
