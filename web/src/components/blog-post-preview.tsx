@@ -13,8 +13,7 @@ const BlogPostPreview = (props: BlogPostPreviewProps) => {
       <div className='p-4 mt-2'>
         <h3 className='font-bold'>{props.node.title}</h3>
         <p className='text-gray-500'>{props.node._rawExcerpt && props.node._rawExcerpt[0].children[0].text}</p>
-        {/* {<p className='mt-2'>{format((props.node.publishedAt), 'MMMM Do, yyyy')}</p>} */}
-        {<p className='mt-2'>{(props.node.publishedAt)}</p>}
+        {<p className='mt-2'>{format((new Date(props.node.publishedAt)), 'PPP')}</p>}
       </div>
     </div>
   ) 
