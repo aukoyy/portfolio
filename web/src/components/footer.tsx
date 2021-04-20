@@ -29,10 +29,9 @@ const FooterIcon = (props: FooterIconProps) => {
   const {icon, url} = props
   return (
     <div className="text-blue-500 m-4">
-      {/* Link only to be used for internal links?? */}
-      <Link to={url} target="_blank">
+      <a href={url} target="_blank">
         <FontAwesomeIcon icon={icon} size="2x" />
-      </Link>
+      </a>
     </div>
   )
 }
