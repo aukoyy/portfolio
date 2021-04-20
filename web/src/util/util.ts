@@ -1,7 +1,13 @@
-//import { format, isFuture } from "date-fns"
+import { format } from "date-fns"
 
 export function cn(...args: any[]) {
   return args.filter(Boolean).join(" ")
+}
+
+export function getBlogUrl(publishedAt: string, slug: any) {
+  return `/blog/${format(new Date(publishedAt), "yyyy/MM")}/${
+    slug.current || slug
+  }/`
 }
 
 /* export function mapEdgesToNodes(data: any) {

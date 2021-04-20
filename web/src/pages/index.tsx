@@ -57,6 +57,9 @@ export const query = graphql`
         publishedAt
         title
         _rawExcerpt
+        slug {
+          current
+        }
         mainImage {
           alt
           asset {
