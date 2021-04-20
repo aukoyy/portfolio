@@ -18,13 +18,12 @@ const IndexPage = (props: any) => {
     )
   }
 
-  console.log(posts.nodes)
+  console.log(posts)
 
   return (
     <Layout>
     <SEO title="Home" />
-    <div className="mt-36 flex justify-center">
-      <div className="w-4/6">
+    <div className="mt-36">
         <h1 className="text-3xl">Hi, I am Øyvind</h1>
         <p>I like creating things with web technologies</p>
 
@@ -39,11 +38,7 @@ const IndexPage = (props: any) => {
           })}
           
         </div>
-
-
-      </div>
     </div>
-
   </Layout>
 );
 }
@@ -62,6 +57,11 @@ export const query = graphql`
         publishedAt
         title
         _rawExcerpt
+        mainImage {
+          caption
+          alt
+          _rawAsset
+        }
       }
     }
   }

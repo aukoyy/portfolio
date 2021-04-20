@@ -28,9 +28,11 @@ const Layout = (props: LayoutProps) => {
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
-      <div>
-        <Nav />
-        <main>{children}</main>
+      <div className="flex justify-center">
+        <div className="w-4/6">
+          <Nav />
+          <main>{children}</main>
+        </div>
       </div>
 
       <Footer />
