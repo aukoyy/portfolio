@@ -58,9 +58,10 @@ export const query = graphql`
         title
         _rawExcerpt
         mainImage {
-          caption
           alt
-          _rawAsset
+          asset {
+            url
+          }
         }
       }
     }
