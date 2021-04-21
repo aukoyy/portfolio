@@ -11,7 +11,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 12,
+        "ecmaVersion": 2020,
         "sourceType": "module"
     },
     "plugins": [
@@ -27,6 +27,7 @@
       }
     },
     "rules": {
+      "no-unused-vars": 0,
       "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
       "no-use-before-define": "off",
       "@typescript-eslint/no-use-before-define": ["error"],

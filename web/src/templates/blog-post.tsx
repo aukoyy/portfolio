@@ -1,26 +1,25 @@
-import React from "react"
-import { graphql } from "gatsby"
-//import GraphQLErrorList from '../components/graphql-error-list'
-import BlogPost from '../components/blog-post'
-//import SEO from "../components/seo"
-//import Layout from '../containers/layout'
-//import {toPlainText} from '../lib/helpers'
+import React from 'react';
+import { graphql } from 'gatsby';
+// import GraphQLErrorList from '../components/graphql-error-list'
+import BlogPost from '../components/blog-post';
+// import SEO from "../components/seo"
+// import {toPlainText} from '../lib/helpers'
 import Layout from '../components/layout';
 
 const BlogPostTemplate = (props: any) => {
-  const { data, errors } = props
-  const post = data && data.post
+  const { data, errors } = props;
+  const post = data && data.post;
 
   return (
-    <Layout> 
+    <Layout>
       <div>
-        <BlogPost {...post} />
+        <BlogPost post={post} />
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -43,33 +42,6 @@ export const query = graphql`
       }
       _rawExcerpt(resolveReferences: { maxDepth: 5 })
       _rawBody(resolveReferences: { maxDepth: 5 })
-      authors {
-        _key
-        author {
-          image {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-          }
-          name
-        }
-      }
     }
   }
-`
+`;

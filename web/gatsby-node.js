@@ -4,12 +4,12 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const {isFuture} = require('date-fns')
+const { isFuture } = require('date-fns');
 
-const {format} = require('date-fns')
+const { format } = require('date-fns');
 
-async function createBlogPostPages (graphql, actions) {
-  const {createPage} = actions
+async function createBlogPostPages(graphql, actions) {
+  const { createPage } = actions;
   const result = await graphql(`
     {
       allSanityPost(
@@ -26,27 +26,27 @@ async function createBlogPostPages (graphql, actions) {
         }
       }
     }
-  `)
+  `);
 
-  if (result.errors) throw result.errors
+  if (result.errors) throw result.errors;
 
-  const postEdges = (result.data.allSanityPost || {}).edges || []
+  const postEdges = (result.data.allSanityPost || {}).edges || [];
 
   postEdges
-    .filter(edge => !isFuture(edge.node.publishedAt))
-    .forEach((edge, index) => {
-      const {id, slug, publishedAt} = edge.node
-      const dateSegment = format(new Date(publishedAt), 'yyyy/MM')
-      const path = `/blog/${dateSegment}/${slug && slug.current}/`
+    .filter((edge) => !isFuture(edge.node.publishedAt))
+    .forEach((edge) => {
+      const { id, slug, publishedAt } = edge.node;
+      const dateSegment = format(new Date(publishedAt), 'yyyy/MM');
+      const path = `/blog/${dateSegment}/${slug && slug.current}/`;
 
       createPage({
         path,
         component: require.resolve('./src/templates/blog-post.tsx'),
-        context: {id}
-      })
-    })
+        context: { id },
+      });
+    });
 }
 
-exports.createPages = async ({graphql, actions}) => {
-  await createBlogPostPages(graphql, actions)
-}
+exports.createPages = async ({ graphql, actions }) => {
+  await createBlogPostPages(graphql, actions);
+};
