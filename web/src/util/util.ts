@@ -4,10 +4,12 @@ export function cn(...args: any[]) {
   return args.filter(Boolean).join(" ")
 }
 
-export function getBlogUrl(publishedAt: string, slug: any) {
-  return `/blog/${format(new Date(publishedAt), "yyyy/MM")}/${
-    slug.current || slug
-  }/`
+interface Slug {
+  current: string
+}
+
+export function getBlogUrl(publishedAt: string, slug: Slug) {
+  return `/blog/${format(new Date(publishedAt), "yyyy/MM")}/${slug.current}/`
 }
 
 /* export function mapEdgesToNodes(data: any) {
