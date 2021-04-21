@@ -49,6 +49,7 @@ export default IndexPage;
 export const query = graphql`
   {
     posts: allSanityPost(
+      limit: 3
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
     ) {

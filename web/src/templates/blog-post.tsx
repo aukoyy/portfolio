@@ -1,20 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
 //import GraphQLErrorList from '../components/graphql-error-list'
-//import BlogPost from '../components/blog-post'
+import BlogPost from '../components/blog-post'
 //import SEO from "../components/seo"
 //import Layout from '../containers/layout'
 //import {toPlainText} from '../lib/helpers'
 import Layout from '../components/layout';
 
 const BlogPostTemplate = (props: any) => {
-  /* const { data, errors } = props
-  const post = data && data.post */
+  const { data, errors } = props
+  const post = data && data.post
 
   return (
     <Layout> 
       <div>
-        <p>test</p>
+        <BlogPost {...post} />
       </div>
     </Layout>
   )
@@ -22,7 +22,7 @@ const BlogPostTemplate = (props: any) => {
 
 export default BlogPostTemplate
 
-/* export const query = graphql`
+export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
     post: sanityPost(id: { eq: $id }) {
       id
@@ -32,8 +32,10 @@ export default BlogPostTemplate
         title
       }
       mainImage {
-        ...SanityImage
         alt
+        asset {
+          url
+        }
       }
       title
       slug {
@@ -70,4 +72,4 @@ export default BlogPostTemplate
       }
     }
   }
-` */
+`

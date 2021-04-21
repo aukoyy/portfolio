@@ -25,10 +25,6 @@ const BlogPage = (props: any) => {
   return (
   <Layout>
     <SEO title="Blog" />
-
-    <div className="flex justify-center">
-      <div className="md:w-11/12 xl:w-2/3">
-
         <div className='mt-8 text-gray-500'>
           <h2>FILTER BY CATEGORY</h2>
             <nav className='mt-2'>
@@ -42,7 +38,7 @@ const BlogPage = (props: any) => {
             <hr className='mt-2' />
         </div>
         
-        <div className="mt-16 flex">
+        <div className="mt-16 flex flex-wrap justify-between">
           {posts.nodes.map((node: any) => {
             return (
               <div key={node.id}>
@@ -52,9 +48,6 @@ const BlogPage = (props: any) => {
           })}
           
         </div>
-
-      </div>
-    </div>
 
   </Layout>
   )
@@ -83,6 +76,15 @@ export const query = graphql`
         publishedAt
         title
         _rawExcerpt
+        slug {
+          current
+        }
+        mainImage {
+          alt
+          asset {
+            url
+          }
+        }
       }
     }
   }
