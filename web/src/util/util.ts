@@ -9,7 +9,9 @@ interface Slug {
 }
 
 export function getBlogUrl(publishedAt: string, slug: Slug) {
-  return `/blog/${format(new Date(publishedAt), "yyyy/MM")}/${slug.current}/`
+  return `/blog/${format(new Date(publishedAt), "yyyy/MM")}/${
+    slug.current && slug.current
+  }/`
 }
 
 /* export function mapEdgesToNodes(data: any) {
