@@ -5,12 +5,12 @@ export function cn(...args: any[]) {
 }
 
 interface Slug {
-  current: string
+  current: string | null
 }
 
 export function getBlogUrl(publishedAt: string, slug: Slug) {
   return `/blog/${format(new Date(publishedAt), "yyyy/MM")}/${
-    slug.current && slug.current
+    slug && slug.current
   }/`
 }
 
