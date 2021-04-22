@@ -56,10 +56,8 @@ export const query = graphql`
           current
         }
         mainImage {
+          ...SanityImage
           alt
-          asset {
-            url
-          }
         }
       }
     }

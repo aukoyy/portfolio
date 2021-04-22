@@ -6,7 +6,8 @@ import SEO from '../components/seo';
 import BlogPostPreview from '../components/blog-post-preview';
 
 const BlogPage = (props: any) => {
-  const { posts } = props.data;
+  const { data } = props;
+  const { posts } = data;
 
   if (!posts) {
     return (
@@ -50,7 +51,29 @@ const BlogPage = (props: any) => {
 export default BlogPage;
 
 export const query = graphql`
-  {
+  fragment SanityImage on SanityMainImage {
+      crop {
+        _key
+        _type
+        top
+        bottom
+        left
+        right
+      }
+      hotspot {
+        _key
+        _type
+        x
+        y
+        height
+        width
+      }
+      asset {
+        _id
+      }
+    }
+
+  query BlogPageQuery {
     posts: allSanityPost(
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
@@ -64,12 +87,16 @@ export const query = graphql`
           current
         }
         mainImage {
+          ...SanityImage
           alt
-          asset {
-            url
-          }
         }
       }
     }
   }
 `;
+
+/* site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+  title
+  description
+  keywords
+} */

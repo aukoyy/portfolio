@@ -1,7 +1,7 @@
 import { format, formatDistance, differenceInDays } from 'date-fns';
 import React from 'react';
 import { buildImageObj } from '../util/util';
-import { imageUrlFor } from '../util/image-url';
+import imageUrlFor from '../util/image-url';
 import PortableText from './portableText';
 
 function BlogPost(props: any) {
@@ -27,11 +27,11 @@ function BlogPost(props: any) {
           </div>
           <div className="w-1/2 lg:w-2/3 object-cover">
             {mainImage && mainImage.asset && (
-            <img
-              className="rounded-xl"
-              src={mainImage.asset.url}
-              alt={mainImage.alt}
-            />
+              <img
+                src={imageUrlFor(buildImageObj(mainImage))
+                  .url()!}
+                alt={mainImage.alt}
+              />
             )}
           </div>
         </div>
