@@ -11,7 +11,7 @@ function BlogPost(props: any) {
   } = post;
   console.log({ title }, { publishedAt }, { _rawBody }, { _rawExcerpt });
   return (
-    <article className="md:mt-8">
+    <article className="md:mt-8 font-raylway">
       <div className="flex">
         <div className="flex justify-between">
           <div>
@@ -38,7 +38,7 @@ function BlogPost(props: any) {
 
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8 text-xl text-gray-800">
         {_rawBody && (<PortableText blocks={_rawBody} />)}
       </div>
     </article>

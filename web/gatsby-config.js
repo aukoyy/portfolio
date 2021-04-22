@@ -15,6 +15,18 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'limelight',
+          'source sans pro\:300,400,400i,700', // you can also specify font weights and styles
+          'roboto',
+          'Raylway',
+        ],
+        display: 'swap',
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
