@@ -35,7 +35,7 @@ const BlogPage = (props: any) => {
         <hr className="mt-2" />
       </div>
 
-      <div className="mt-16 flex flex-wrap justify-between">
+      <div className="mt-16 flex flex-wrap justify-center lg:justify-between">
         {posts.nodes.map((node: any) => (
           <div key={node.id}>
             <BlogPostPreview node={node} />

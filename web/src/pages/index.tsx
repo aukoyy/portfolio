@@ -25,7 +25,7 @@ const IndexPage = (props: any) => {
         <p>I like creating things with web technologies</p>
 
         <h2 className="text-2xl mt-36">Latest blog posts</h2>
-        <div className="mt-8 flex flex-wrap justify-between">
+        <div className="mt-8 flex flex-wrap justify-center lg:justify-between">
           {posts.nodes.map((node: any) => (
             <div key={node.id}>
               <BlogPostPreview node={node} />
