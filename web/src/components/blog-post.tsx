@@ -9,7 +9,6 @@ function BlogPost(props: any) {
   const {
     _rawBody, title, mainImage, publishedAt, _rawExcerpt,
   } = post;
-  console.log({ title }, { publishedAt }, { _rawBody }, { _rawExcerpt });
   return (
     <article className="md:mt-8">
       <div className="flex">

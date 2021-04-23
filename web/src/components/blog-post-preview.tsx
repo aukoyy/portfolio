@@ -13,14 +13,19 @@ const BlogPostPreview = (props: BlogPostPreviewProps) => {
   const {
     publishedAt, slug, mainImage, title, _rawExcerpt, categories,
   } = node;
-  console.log([1].length > 0);
 
   return (
 
     <Link to={getBlogUrl(publishedAt, slug)}>
       <div className="shadow rounded-xl mt-4 md:w-96">
-        {categories.length > 0 && categories[0].title
-          && <span className="absolute bg-white opacity-80 text-sm px-1.5 m-2  rounded">{categories[0].title.toUpperCase()}</span>}
+        <div className="absolute m-2">
+          {categories.length > 0 && categories.map((category: any, index: number) => (
+            // TODO: this key prop does not seam to work.
+            // eslint-disable-next-line no-underscore-dangle
+            <span key={categories._id} className="bg-white opacity-80 text-sm px-1.5 mx-1 rounded">{categories[index].title.toUpperCase()}</span>
+          ))}
+        </div>
+
         {mainImage && mainImage.asset && (
         <img
           src={imageUrlFor(buildImageObj(mainImage))

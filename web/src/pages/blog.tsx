@@ -92,6 +92,7 @@ export const query = graphql`
         }
         categories {
           title
+          _id
         }
       }
     }
