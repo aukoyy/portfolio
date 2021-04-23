@@ -74,6 +74,12 @@ export const query = graphql`
     }
 
   query BlogPageQuery {
+    categories: allSanityCategory {
+      nodes {
+        _id
+        title
+      }
+    }
     posts: allSanityPost(
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
