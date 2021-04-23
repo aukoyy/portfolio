@@ -11,12 +11,16 @@ interface BlogPostPreviewProps {
 const BlogPostPreview = (props: BlogPostPreviewProps) => {
   const { node } = props;
   const {
-    publishedAt, slug, mainImage, title, _rawExcerpt,
+    publishedAt, slug, mainImage, title, _rawExcerpt, categories,
   } = node;
+  console.log([1].length > 0);
+
   return (
 
     <Link to={getBlogUrl(publishedAt, slug)}>
       <div className="shadow rounded-xl mt-4 md:w-96">
+        {categories.length > 0 && categories[0].title
+          && <span className="absolute bg-white opacity-80 text-sm px-1.5 m-2  rounded">{categories[0].title.toUpperCase()}</span>}
         {mainImage && mainImage.asset && (
         <img
           src={imageUrlFor(buildImageObj(mainImage))

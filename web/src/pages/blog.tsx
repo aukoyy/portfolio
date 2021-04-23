@@ -90,6 +90,9 @@ export const query = graphql`
           ...SanityImage
           alt
         }
+        categories {
+          title
+        }
       }
     }
   }
