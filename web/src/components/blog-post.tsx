@@ -11,7 +11,7 @@ function BlogPost(props: any) {
   } = post;
   console.log({ title }, { publishedAt }, { _rawBody }, { _rawExcerpt });
   return (
-    <article className="md:mt-8 font-raylway">
+    <article className="md:mt-8">
       <div className="flex">
         <div className="flex justify-between">
           <div>
