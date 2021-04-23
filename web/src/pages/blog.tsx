@@ -1,13 +1,17 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState } from 'react';
 import { Link, graphql } from 'gatsby';
 
+import { DiagnosticCategory } from 'typescript';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import BlogPostPreview from '../components/blog-post-preview';
 
 const BlogPage = (props: any) => {
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const { data } = props;
-  const { posts } = data;
+  const { posts, categories } = data;
 
   if (!posts) {
     return (
@@ -19,6 +23,24 @@ const BlogPage = (props: any) => {
     );
   }
 
+  const isPostNodeInSelectedCategories = (postCategories: any) => {
+    if (selectedCategories.length === 0) {
+      return true;
+    }
+    for (let i = 0; i < postCategories.length; i += 1) {
+      return selectedCategories.includes(postCategories[i]);
+    }
+  };
+
+  const toggleCategory = (categoryTitle: string) => {
+    if (selectedCategories.includes(categoryTitle)) {
+      const newSelectedCategories = selectedCategories.filter((value) => value === categoryTitle);
+      setSelectedCategories(newSelectedCategories);
+    } else {
+      setSelectedCategories([categoryTitle, ...selectedCategories]);
+    }
+  };
+
   return (
     <Layout>
       <SEO title="Blog" />
@@ -26,21 +48,26 @@ const BlogPage = (props: any) => {
         <h2>FILTER BY CATEGORY</h2>
         <nav className="mt-2">
           <ul className="flex">
-            <li>All</li>
-            <li className="ml-8">Web</li>
-            <li className="ml-8">Freelancing</li>
-            <li className="ml-8">Futurology</li>
+            <li onClick={() => setSelectedCategories([])}>
+              All
+            </li>
+            {categories && categories.nodes.map((categoryNode: any) => (
+            // eslint-disable-next-line no-underscore-dangle
+              <li onClick={() => toggleCategory(categoryNode.title)} key={categoryNode._id} className={`mx-4 px-2 ${selectedCategories.includes(categoryNode.title) ? 'font-bold border-blue-600 border-b-2' : ''}`}>{categoryNode.title}</li>
+            ))}
           </ul>
         </nav>
         <hr className="mt-2" />
       </div>
 
       <div className="mt-16 flex flex-wrap justify-center lg:justify-between">
-        {posts.nodes.map((node: any) => (
-          <div key={node.id}>
-            <BlogPostPreview node={node} />
-          </div>
-        ))}
+        {posts.nodes
+          .filter((postNode: any) => isPostNodeInSelectedCategories(postNode))
+          .map((postNode: any) => (
+            <div key={postNode.id}>
+              <BlogPostPreview node={postNode} />
+            </div>
+          ))}
 
       </div>
 
