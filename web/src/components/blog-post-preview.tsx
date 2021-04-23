@@ -20,7 +20,7 @@ const BlogPostPreview = (props: BlogPostPreviewProps) => {
       <div className="shadow rounded-xl mt-4 md:w-96">
         <div className="absolute m-2">
           {categories.length > 0 && categories.map((category: any, index: number) => (
-            // TODO: this key prop does not seam to work.
+            // TODO: this key prop does not seam to work. Or is at least producing an error
             // eslint-disable-next-line no-underscore-dangle
             <span key={categories._id} className="bg-white opacity-80 text-sm px-1.5 mx-1 rounded">{categories[index].title.toUpperCase()}</span>
           ))}
