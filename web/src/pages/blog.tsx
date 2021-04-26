@@ -29,11 +29,14 @@ const BlogPage = (props: any) => {
       return true;
     }
 
+    let returnvalue = false;
     for (let i = 0; i < postNode.categories.length; i += 1) {
       console.log(selectedCategories.includes(postNode.categories[i].title));
-
-      return selectedCategories.includes(postNode.categories[i].title);
+      if (selectedCategories.includes(postNode.categories[i].title)) {
+        returnvalue = true;
+      }
     }
+    return returnvalue;
 
     /* postNode.categories.forEach((category: any) => {
       if (selectedCategories.includes(category.title)) {
