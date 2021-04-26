@@ -9,7 +9,7 @@ import SEO from '../components/seo';
 import BlogPostPreview from '../components/blog-post-preview';
 
 const BlogPage = (props: any) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(['Web']);
   const { data } = props;
   const { posts, categories } = data;
 
@@ -23,21 +23,37 @@ const BlogPage = (props: any) => {
     );
   }
 
-  const isPostNodeInSelectedCategories = (postCategories: any) => {
+  const isPostInSelectedCategories = (postNode: any): boolean => {
+    // here I have postNode.categories[] as a prop and access to the
+    // useState list of string categories
+
+    postNode.categories.forEach((category: string) => {
+      if (selectedCategories.includes(category)) {
+        return true;
+      }
+    });
+    return false;
+  };
+
+  const shouldPostRender = (postNode: any): boolean => {
     if (selectedCategories.length === 0) {
       return true;
+    } if (isPostInSelectedCategories(postNode)) {
+      return true;
     }
-    for (let i = 0; i < postCategories.length; i += 1) {
-      return selectedCategories.includes(postCategories[i]);
-    }
+    return false;
   };
 
   const toggleCategory = (categoryTitle: string) => {
     if (selectedCategories.includes(categoryTitle)) {
-      const newSelectedCategories = selectedCategories.filter((value) => value === categoryTitle);
+      console.log('filtering category', { categoryTitle });
+      const newSelectedCategories: string[] = selectedCategories
+        .filter((cat: string) => cat !== categoryTitle);
       setSelectedCategories(newSelectedCategories);
     } else {
-      setSelectedCategories([categoryTitle, ...selectedCategories]);
+      console.log('adding category', { categoryTitle });
+      const newSelectedCategories = [categoryTitle, ...selectedCategories];
+      setSelectedCategories(newSelectedCategories);
     }
   };
 
@@ -62,7 +78,7 @@ const BlogPage = (props: any) => {
 
       <div className="mt-16 flex flex-wrap justify-center lg:justify-between">
         {posts.nodes
-          .filter((postNode: any) => isPostNodeInSelectedCategories(postNode))
+          .filter((postNode: any) => shouldPostRender(postNode))
           .map((postNode: any) => (
             <div key={postNode.id}>
               <BlogPostPreview node={postNode} />
