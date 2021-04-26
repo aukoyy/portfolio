@@ -9,7 +9,7 @@ import SEO from '../components/seo';
 import BlogPostPreview from '../components/blog-post-preview';
 
 const BlogPage = (props: any) => {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>(['Web']);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const { data } = props;
   const { posts, categories } = data;
 
@@ -23,37 +23,31 @@ const BlogPage = (props: any) => {
     );
   }
 
-  const isPostInSelectedCategories = (postNode: any): boolean => {
-    // here I have postNode.categories[] as a prop and access to the
-    // useState list of string categories
-
-    postNode.categories.forEach((category: string) => {
-      if (selectedCategories.includes(category)) {
-        return true;
-      }
-    });
-    return false;
-  };
-
   const shouldPostRender = (postNode: any): boolean => {
     if (selectedCategories.length === 0) {
-      return true;
-    } if (isPostInSelectedCategories(postNode)) {
+      console.log('no categories selected, rendering all');
       return true;
     }
-    return false;
+
+    for (let i = 0; i < postNode.categories.length; i += 1) {
+      console.log(selectedCategories.includes(postNode.categories[i].title));
+
+      return selectedCategories.includes(postNode.categories[i].title);
+    }
+
+    /* postNode.categories.forEach((category: any) => {
+      if (selectedCategories.includes(category.title)) {
+        console.log('Should render', category.title);
+        return true;
+      }
+    }); */
   };
 
   const toggleCategory = (categoryTitle: string) => {
     if (selectedCategories.includes(categoryTitle)) {
-      console.log('filtering category', { categoryTitle });
-      const newSelectedCategories: string[] = selectedCategories
-        .filter((cat: string) => cat !== categoryTitle);
-      setSelectedCategories(newSelectedCategories);
+      setSelectedCategories(selectedCategories.filter((cat: string) => cat !== categoryTitle));
     } else {
-      console.log('adding category', { categoryTitle });
-      const newSelectedCategories = [categoryTitle, ...selectedCategories];
-      setSelectedCategories(newSelectedCategories);
+      setSelectedCategories([categoryTitle, ...selectedCategories]);
     }
   };
 
