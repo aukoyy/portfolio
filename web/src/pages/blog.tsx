@@ -23,27 +23,19 @@ const BlogPage = (props: any) => {
     );
   }
 
-  const shouldPostRender = (postNode: any): boolean => {
-    if (selectedCategories.length === 0) {
-      console.log('no categories selected, rendering all');
-      return true;
-    }
-
-    let returnvalue = false;
-    for (let i = 0; i < postNode.categories.length; i += 1) {
-      console.log(selectedCategories.includes(postNode.categories[i].title));
-      if (selectedCategories.includes(postNode.categories[i].title)) {
-        returnvalue = true;
-      }
-    }
-    return returnvalue;
-
-    /* postNode.categories.forEach((category: any) => {
+  const isPostInSelectedCategories = (postNode: any) => {
+    let shouldRender = false;
+    postNode.categories.forEach((category: any) => {
       if (selectedCategories.includes(category.title)) {
-        console.log('Should render', category.title);
-        return true;
+        shouldRender = true;
       }
-    }); */
+    });
+    return shouldRender;
+  };
+
+  const shouldPostRender = (postNode: any): boolean => {
+    if (selectedCategories.length === 0) return true;
+    return isPostInSelectedCategories(postNode);
   };
 
   const toggleCategory = (categoryTitle: string) => {
@@ -61,12 +53,20 @@ const BlogPage = (props: any) => {
         <h2>FILTER BY CATEGORY</h2>
         <nav className="mt-2">
           <ul className="flex">
-            <li onClick={() => setSelectedCategories([])}>
+            <li onClick={() => setSelectedCategories([])} className={`cursor-pointer ${selectedCategories.length === 0 ? 'text-gray-800' : ''}`}>
               All
             </li>
             {categories && categories.nodes.map((categoryNode: any) => (
-            // eslint-disable-next-line no-underscore-dangle
-              <li onClick={() => toggleCategory(categoryNode.title)} key={categoryNode._id} className={`mx-4 px-2 ${selectedCategories.includes(categoryNode.title) ? 'font-bold border-blue-600 border-b-2' : ''}`}>{categoryNode.title}</li>
+              <li
+                onClick={() => toggleCategory(categoryNode.title)}
+                // eslint-disable-next-line no-underscore-dangle
+                key={categoryNode._id}
+                className={`cursor-pointer mx-4 px-2 ${selectedCategories.includes(categoryNode.title)
+                  ? 'text-gray-800 border-blue-600 border-b-2' : ''}`}
+              >
+                {categoryNode.title}
+
+              </li>
             ))}
           </ul>
         </nav>
