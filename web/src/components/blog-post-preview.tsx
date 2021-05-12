@@ -18,7 +18,7 @@ const BlogPostPreview = (props: BlogPostPreviewProps) => {
 
     <Link to={getBlogUrl(publishedAt, slug)}>
       <div className="shadow rounded-xl mt-4 md:w-96">
-        <div className="absolute m-2">
+        <div className="absolute m-2 flex flex-wrap gap-1">
           {categories && categories.length > 0 && categories.map((category: any, index: number) => (
             // TODO: this key prop does not seam to work. Or is at least producing an error
             // eslint-disable-next-line no-underscore-dangle

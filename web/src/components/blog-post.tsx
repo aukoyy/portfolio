@@ -11,35 +11,32 @@ function BlogPost(props: any) {
   } = post;
   return (
     <article className="md:mt-8">
-      <div className="flex">
-        <div className="flex justify-between">
-          <div>
-            <h1 className="text-4xl mt-12 mr-4 border-b-4 border-blue-500">{title}</h1>
 
-            {publishedAt && (
-              <div className="mt-2 text-gray-300">
-                {differenceInDays(new Date(publishedAt), new Date()) > 3
-                  ? formatDistance(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), 'MMMM do, yyyy')}
-              </div>
-            )}
-          </div>
-          <div className="w-1/2 lg:w-2/3 object-cover">
-            {mainImage && mainImage.asset && (
-              <img
-                src={imageUrlFor(buildImageObj(mainImage))
-                  .url()!}
-                alt={mainImage.alt}
-              />
-            )}
-          </div>
-        </div>
+      <h1 className="text-4xl mt-12 border-b-4 border-blue-500">{title}</h1>
 
+      {publishedAt && (
+      <div className="mt-2 text-gray-300">
+        {differenceInDays(new Date(publishedAt), new Date()) > 3
+          ? formatDistance(new Date(publishedAt), new Date())
+          : format(new Date(publishedAt), 'MMMM do, yyyy')}
+      </div>
+      )}
+
+      <div className="flex justify-center mt-16">
+        {mainImage && mainImage.asset && (
+          <img
+            className="rounded-xl shadow max-h-96"
+            src={imageUrlFor(buildImageObj(mainImage))
+              .url()!}
+            alt={mainImage.alt}
+          />
+        )}
       </div>
 
-      <div className="mt-8 text-xl text-gray-800">
+      <div className="mt-16 text-xl text-gray-800">
         {_rawBody && (<PortableText blocks={_rawBody} />)}
       </div>
+
     </article>
   );
 }

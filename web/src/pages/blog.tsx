@@ -52,7 +52,7 @@ const BlogPage = (props: any) => {
       <div className="mt-8 text-gray-500">
         <h2>FILTER BY CATEGORY</h2>
         <nav className="mt-2">
-          <ul className="flex">
+          <ul className="flex flex-wrap">
             <li onClick={() => setSelectedCategories([])} className={`cursor-pointer ${selectedCategories.length === 0 ? 'text-gray-800' : ''}`}>
               All
             </li>
