@@ -15,11 +15,11 @@ function BlogPost(props: any) {
       <h1 className="text-4xl mt-12 border-b-4 border-blue-500">{title}</h1>
 
       {publishedAt && (
-      <div className="mt-2 text-gray-300">
-        {differenceInDays(new Date(publishedAt), new Date()) > 3
-          ? formatDistance(new Date(publishedAt), new Date())
-          : format(new Date(publishedAt), 'MMMM do, yyyy')}
-      </div>
+        <div className="mt-2 text-gray-300">
+          {differenceInDays(new Date(publishedAt), new Date()) > 3
+            ? formatDistance(new Date(publishedAt), new Date())
+            : format(new Date(publishedAt), 'MMMM do, yyyy')}
+        </div>
       )}
 
       <div className="flex justify-center mt-16">
@@ -33,7 +33,7 @@ function BlogPost(props: any) {
         )}
       </div>
 
-      <div className="mt-16 text-xl text-gray-800">
+      <div className="prose mt-16 text-xl text-gray-800">
         {_rawBody && (<PortableText blocks={_rawBody} />)}
       </div>
 

@@ -55,5 +55,14 @@ export default {
 			type: 'mainImage',
 			options: { hotspot: true },
 		},
+		{
+			type: 'image',
+			preview: {
+				select: {
+					imageUrl: 'asset.url',
+					title: 'caption',
+				},
+			},
+		},
 	],
 };
